@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lucky Creature Collector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script type="text/javascript" src="script.js"></script>
+      
+</head>
+<body>
+
+    <div class="jumbotron">
+    
+        <h1 class="text-center">Lucky Creature Collector</h1>
+        <div class="text-center">
+    </div>    
+
+      <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h3 class="display-7">Directions:</h3>
+              <p class="lead"> You will be given a random number at the start of the game.
+                There are four lucky creatures below.  By clicking on a creature, you will add a specific amount of points to your total score.
+                You win the game by matching your total score to the random number.  You lose the game if your total score goes above the random number.
+                The value of each crystal is hidden from you until you click on it.
+                Each time when the game starts, the game will change the values of the crystals.
+              </p>
+            </div>
+          </div>
+<div = row></div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5>Number to Guess: <span id="number-to-guess"></span></h5> 
+       
+  </div>
+</div>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5>Wins: <span id="wins"></span></h5>
+      <h5>Losses: <span id="losses"></span></h5>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5>Your total score: <span id="total-score"></span></h5>
+  </div>
+</div>
+</div>
+
+<br>
+<div class="container">
+      
+  <div class="row">
+    <div class="col-sm-3">
+      <!-- <div Id = "creatures"> -->
+      <img src="assets/images/luckycat.jpg" Id = "creature" class="img-thumbnail" alt="Cat" style = "width:100%">
+    </div>
+    <div class="col-sm-3">
+      <img src="assets/images/dragon.jpg" Id = "creature1" class="img-thumbnail" alt="Dragon">
+    </div>
+    <div class="col-sm-3">
+      <img src="assets/images/tortoise.jpg" Id = "creature2" class="img-thumbnail" alt="Tortoise">
+    </div>
+    <div class="col-sm-3">
+      <img src="assets/images/unicorn.jpg" Id = "creature3" class="img-thumbnail" alt="Unicorn">
+    </div>
+  </div>
+  </div>
+</div>
+
+
+ <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+ 
+
+  // var counter = 0;
+  // var numberOptions = [];
+  var targetNumber = "";
+  var totalScore = 0;
+  $("#total-score").text(totalScore);
+  var wins = 0;
+  var losses = 0;
+
+  var savedNum = (Math.floor(Math.random() *11+1));
+  var savedNum1 = (Math.floor(Math.random() *11+1));
+  var savedNum2 = (Math.floor(Math.random() *11+1));
+  var savedNum3 = (Math.floor(Math.random() *11+1));
+
+
+  var targetNumber = Math.floor(Math.random() * 101 + 19);
+  $("#number-to-guess").text(targetNumber);
+  
+  function reset() {
+  targetNumber = Math.floor(Math.random() * 101 + 19);
+  $("#number-to-guess").text(targetNumber);
+  
+  savedNum = (Math.floor(Math.random() *11+1));
+  savedNum1 = (Math.floor(Math.random() *11+1));
+  savedNum2 = (Math.floor(Math.random() *11+1));
+  savedNum3 = (Math.floor(Math.random() *11+1));
+  
+
+  
+  totalScore = 0;
+  $("#total-score").text(totalScore);
+  }
+  
+  function win (){
+    alert("YOU WON!!!!!!!");
+    wins++;
+    $("#wins").text(wins);
+    reset();
+  }
+
+  function lose (){
+    alert("YOU LOST!!!!!!!");
+    losses++;
+    $("#losses").text(losses);
+    reset();
+  }
+  
+  $("#creature").on("click", function(){
+    totalScore = savedNum + totalScore;
+    $("#total-score").text(totalScore);
+    console.log(totalScore);
+    
+    if (totalScore === targetNumber)
+    {
+      win ();
+    }
+    else if (totalScore > targetNumber) 
+    {
+      lose ();
+    }
+
+  });   
+
+  $("#creature1").on("click", function(){
+    totalScore = savedNum1 + totalScore;
+    $("#total-score").text(totalScore);
+    console.log(totalScore);
+    
+    if (totalScore === targetNumber)
+    {
+      win ();
+    }
+    else if (totalScore > targetNumber) 
+    {
+      lose ();
+    }
+
+  });   
+
+
+  $("#creature2").on("click", function(){
+    totalScore = savedNum2 + totalScore;
+    $("#total-score").text(totalScore);
+    console.log(totalScore);
+    
+    if (totalScore === targetNumber)
+    {
+      win ();
+    }
+    else if (totalScore > targetNumber) 
+    {
+      lose ();
+    }
+
+  });   
+
+
+  $("#creature3").on("click", function(){
+    totalScore = savedNum3 + totalScore;
+    $("#total-score").text(totalScore);
+    console.log(totalScore);
+    
+    if (totalScore === targetNumber)
+    {
+      win ();
+    }
+    else if (totalScore > targetNumber) 
+    {
+      lose ();
+    }
+
+  });   
+
+
+  
+  </script>
+  
+</body>
+</html>
